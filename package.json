@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "todo-list",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,32 +7,24 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "npm run test:unit && npm run test:e2e",
-    "test:unit": "cross-env TEST=unit ava ./test/specs/**/*",
-    "test:e2e": "cross-env TEST=e2e ava ./test/e2e/**/*"
+    "lint:prettier": "prettier --check .",
+    "lint": "yarn lint:prettier",
+    "lintfix": "prettier --write --list-different ."
   },
   "dependencies": {
-    "core-js": "^3.25.3",
-    "node": "^16.13.2",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "axios": "^1.2.2",
+    "core-js": "^3.27.1",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "vue-template-compiler": "^2.7.10",
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/test-utils": "^1.3.0",
-    "ava": "^4.3.3",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "cross-env": "^7.0.3",
-    "jsdom": "^20.0.1",
-    "jsdom-global": "^3.0.2",
-    "require-extension-hooks": "^0.3.3",
-    "require-extension-hooks-babel": "^1.0.0",
-    "require-extension-hooks-vue": "^3.0.0"
-  },
-  "overrides": {
-    "require-extension-hooks-vue": {
-      "vue-template-compiler": "$vue-template-compiler"
-    }
+    "@nuxtjs/vuetify": "^1.12.3",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }
