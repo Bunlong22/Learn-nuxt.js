@@ -40,6 +40,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
   ],
   env: {
     NUXT_ENV_API_URL: process.env.NUXT_ENV_API_URL,
