@@ -1,4 +1,4 @@
-# todo-list
+# Weather-app
 
 ## Build Setup
 
