@@ -7,7 +7,7 @@
       <v-card color="dark darken-2" dark>
         <v-card-text>
           <v-layout justify-center>
-            <v-flex  xs4 class="text-xs-center">
+            <v-flex xs4 class="text-xs-center">
               <h4>Temperature</h4>
               <h1 class="display-1">{{ weather.name }}</h1>
               <img :src="icon" alt="weather icon" />
@@ -18,7 +18,7 @@
                 }}</span>
               </p>
             </v-flex>
-            <v-flex  xs4 class="text-xs-center">
+            <v-flex xs4 class="text-xs-center">
               <h4>Wind & Pressure:</h4>
               <h3 class="headline">
                 Wind: {{ weather.wind.speed }} m/s ({{ weather.wind.deg }}
@@ -31,7 +31,7 @@
                 Pressure: {{ weather.main.pressure }} hPa
               </h3>
             </v-flex>
-            <v-flex  xs4 class="text-xs-center">
+            <v-flex xs4 class="text-xs-center">
               <h4>Other:</h4>
               <h3 class="headline mt-4">
                 Max Temperature:
@@ -55,51 +55,43 @@
         ></v-text-field>
       </v-form>
     </v-flex>
-    <!-- </v-layout> -->
   </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  // intergrate , and config api for ssr and ajax meaning that 
-  // if api is error or need to config api this is the part to change
-
-  data() {
-    return {
-      city: 'London',
-    }
-  },
   computed: {
+    ...mapState('weather', ['weather']),
+    city: {
+      get() {
+        return this.$store.state.weather.city
+      },
+      set(value) {
+        this.$store.commit('weather/setCity', value)
+      }
+    },
     icon() {
       return this.weather.weather
         ? `https://openweathermap.org/img/w/${this.weather.weather[0].icon}.png`
         : ''
     }
   },
-  asyncData({ params, $axios }) {
-    return $axios
-      .$get(
-        `https://api.openweathermap.org/data/2.5/weather?q=London&appid=603639e206d8b0a420855297f9304e57`
-      )
-      .then(res => {
-        return { weather: res }
-      })
+  fetch({ store, $axios }) {
+    return store.dispatch('weather/getWeatherInfo')
   },
   methods: {
     getWeatherInfo() {
-      this.$axios
-        .$get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${
-            this.city
-          }&appid=603639e206d8b0a420855297f9304e57`
-        )
-        .then(res => (this.weather = res))
+      this.$store.dispatch('weather/getWeatherInfo')
     },
     temp() {
-      return this.weather.main ? Math.round(this.weather.main.temp - 273) : ''
+      return Math.round(this.weather.main.temp - 273)
     }
   }
 }
+</script>
+
+<style></style>
 </script>
 
 <style></style>
