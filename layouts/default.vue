@@ -9,8 +9,11 @@
           </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn flat>
+          <v-btn>
             <n-link to="/weather-app" class="white--text">Weather App</n-link>
+          </v-btn>
+          <v-btn>
+            <n-link to="/quiz" class="white--text">Quiz App</n-link>
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
