@@ -18,7 +18,7 @@ export const state = () => ({
         .$get(
           `https://api.openweathermap.org/data/2.5/weather?q=${
             context.state.city
-          }&appid=603639e206d8b0a420855297f9304e57`
+          }&appid=${process.env.weatherAppId}`
         )
         .then(res => context.commit('setWeather', res))
     }
