@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <no-ssr>
+      <notifications group="notify" />
+    </no-ssr>
     <v-content>
       <v-toolbar color="green" dark>
         <v-toolbar-title>

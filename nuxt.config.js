@@ -26,7 +26,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-     '@/plugins/ability', '@/plugins/axios'
+     '@/plugins/ability', '@/plugins/axios', {src:'@/plugins/notify',ssr:false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
